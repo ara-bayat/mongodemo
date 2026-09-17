@@ -1,3 +1,11 @@
 spring:
   application:
     name: mongodemo
+  mongodb:
+    username: admin
+    password: Aa@12345
+    host: localhost
+    port: 27017
+    database: learning
+    authentication-database: admin
+
