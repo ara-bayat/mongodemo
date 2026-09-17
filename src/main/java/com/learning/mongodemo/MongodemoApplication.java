@@ -1,6 +1,8 @@
 package com.learning.mongodemo;
 
+import com.learning.mongodemo.product.dto.Category2;
 import com.learning.mongodemo.product.dto.Product;
+import com.learning.mongodemo.product.repository.CategoryRepository;
 import com.learning.mongodemo.product.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,12 +19,24 @@ public class MongodemoApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(
-			ProductRepository repository
+			ProductRepository repository,
+			CategoryRepository categoryRepository
 	) {
-		return args -> {
+		return _ -> {
+			var category = Category2.builder()
+					.name("smartphone")
+					.description("Smartphone")
+					.build();
+			var category2 = Category2.builder()
+					.name("mobile")
+					.description("Mobile")
+					.build();
+			categoryRepository.save(category);
+			categoryRepository.save(category2);
 			var product = Product.builder()
 					.name("iphone")
 					.description("iphone")
+					.category2(category2)
 					.build();
 			repository.insert(product);
 		};
