@@ -17,7 +17,7 @@ public class MongodemoApplication {
 		SpringApplication.run(MongodemoApplication.class, args);
 	}
 
-	@Bean
+//	@Bean
 	public CommandLineRunner commandLineRunner(
 			ProductRepository repository,
 			CategoryRepository categoryRepository
